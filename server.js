@@ -56,10 +56,12 @@ app.get('/', (req, res) => {
   res.send('Hello from Node.js Starter Application!');
 });
 
+
+TEST_SECRET = process.env.TEST_SECRET
+val x = Buffer.from(TEST_SECRET, 'base64');
 app.get('/test', (req, res) => {
-  // Use req.log (a `pino` instance) to log JSON:
-  req.log.info({message: 'Test back!'});
-  res.send('Test back!');
+  req.log.info({message: `Test back ${x}!`});
+  res.send(`Test back ${x}!`);
 });
 
 app.get('*', (req, res) => {
