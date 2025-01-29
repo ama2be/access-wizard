@@ -56,6 +56,12 @@ app.get('/', (req, res) => {
   res.send('Hello from Node.js Starter Application!');
 });
 
+app.get('/test', (req, res) => {
+  // Use req.log (a `pino` instance) to log JSON:
+  req.log.info({message: 'Test back!'});
+  res.send('Test back!');
+});
+
 app.get('*', (req, res) => {
   res.status(404).send("Not Found");
 });
