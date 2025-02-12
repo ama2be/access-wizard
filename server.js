@@ -82,30 +82,30 @@ async function getDb(accessRight, res){
 
     oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 
-    const connection = await oracledb.getConnection ({
-       user          : username,
-       password      : password,
-       connectString : "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=si0exarac02.de.bosch.com)(PORT=38000)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=RLDD01_OPS_2.BOSCH.COM)))"
-    });
-    const result = await connection.execute(
-        `SELECT LOW
-         FROM V_CUSN_AGR_1251
-         WHERE ARG_NAME = :accRight`,
-         [accessRight],
-    );
+    //const connection = await oracledb.getConnection ({
+    //   user          : username,
+    //   password      : password,
+    //   connectString : "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=si0exarac02.de.bosch.com)(PORT=38000)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=RLDD01_OPS_2.BOSCH.COM)))"
+    //});
+    //const result = await connection.execute(
+    //    `SELECT LOW
+    //     FROM V_CUSN_AGR_1251
+    //     WHERE ARG_NAME = :accRight`,
+    //     [accessRight],
+    //);
 
-   //const mypw = "oraclepwd"
-   //const connection = await oracledb.getConnection ({
-   //    user          : "C##RAW_E3",
-   //    password      : mypw,
-   //    connectString : "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=FREE)))"
-   //});
-   //const result = await connection.execute(
-   //    `SELECT LOW
-   //     FROM V_CUSN_AGR_1251
-   //     WHERE ARG_NAME = :accRight`,
-   //     [accessRight],
-   //);
+   const mypw = "oraclepwd"
+   const connection = await oracledb.getConnection ({
+       user          : "C##RAW_E3",
+       password      : mypw,
+       connectString : "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=FREE)))"
+   });
+   const result = await connection.execute(
+       `SELECT LOW
+        FROM V_CUSN_AGR_1251
+        WHERE ARG_NAME = :accRight`,
+        [accessRight],
+   );
 
 
     console.log(accessRight);
